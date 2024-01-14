@@ -3,15 +3,14 @@
 @tailwind utilities;
 
 :root {
+  /* light mode */
   --bg: hsl(0, 0%, 98%);
-  --elements-color: hsl(0, 0%, 100%);
-  --color-text-primary: hsl(200, 15%, 8%);
-}
+  --element-color: hsl(0, 0%, 100%);
+  --color-text: hsl(200, 15%, 8%);
+  --input-color: hsl(0, 0%, 52%);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: hsl(207, 26%, 17%);
-    --elements-color: hsl(209, 23%, 22%);
-    --color-text-primary: hsl(0, 0%, 100%);
-  }
+  /* dark mode */
+  --dark-bg: hsl(207, 26%, 17%);
+  --dark-element-color: hsl(209, 23%, 22%);
+  --dark-color-text: hsl(0, 0%, 100%);
 }

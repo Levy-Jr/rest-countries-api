@@ -1,7 +1,11 @@
-const Home = () => {
+"use client"
+
+import { Home } from '@/components/Home'
+
+const App = () => {
   return (
-    <div>NANÇA</div>
+    <Home />
   )
 }
 
-export default Home 
+export default App

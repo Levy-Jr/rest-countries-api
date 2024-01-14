@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
+import { Providers } from '@/utils/providers'
 
 const nunito_sans = Nunito_Sans({
   weight: ['300', '600', '800'],
@@ -18,8 +19,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${nunito_sans.className} bg-bg text-color-primary`}>{children}</body>
+    <html lang="en" className='dark'>
+      <body className={`${nunito_sans.className} bg-bg dark:bg-dark-bg text-color dark:text-dark-color`}>
+        <Providers>
+          <header className='el-color dark:bg-dark-el-color py-4'>
+            <div className='flex justify-between w-[min(69.375rem,100%-2rem)] mx-auto'>
+              <h1 className='font-extrabold'>Where in the world?</h1>
+              <button className='font-semibold'>Dark Mode</button>
+            </div>
+          </header>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

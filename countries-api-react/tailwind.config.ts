@@ -9,13 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        'bg': 'var(--bg)'
+        'bg': 'var(--bg)',
+        'dark-bg': 'var(--dark-bg)',
+        'el-color': 'var(--element-color)',
+        'dark-el-color': 'var(--dark-element-color)',
+        'input-color': 'var(--input-color)'
       },
       colors: {
-        'color-primary': 'var(--color-text-primary)'
+        'color': 'var(--color-text)',
+        'dark-color': 'var(--dark-color-text)'
       }
     },
   },
   plugins: [],
+  darkMode: 'class'
 }
 export default config
