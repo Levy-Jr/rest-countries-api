@@ -10,19 +10,16 @@ export const Country = ({ flag, name, population, region, capital }: Props) => {
 
   return (
     <li className="w-[min(100%,20rem)] mx-auto bg-el-color dark:bg-dark-el-color rounded overflow-hidden cursor-pointer shadow-md">
-      <img src={flag} alt={`bandeira do país ${name}`} className="w-full h-[45%] object-cover" />
-
-      <div className="p-6 pb-[5rem] text-[0.875rem] h-[55%]">
-        <h2 className="font-bold text-[1.1rem] mb-3">{name}</h2>
-
-        <p className="mb-1"><span className="font-semibold">Population: </span>
-          <span className="opacity-90">{new Intl.NumberFormat("en-US").format(population)}</span></p>
-
-        <p className="mb-1"><span className="font-semibold">Region:</span> <span className="opacity-90">{region}</span></p>
-
-        <p><span className="font-semibold">Capital:</span> <span className="opacity-90">{capital}</span></p>
-
-      </div>
+      <a href={`countries/${name}`}>
+        <img src={flag} alt={`bandeira do país ${name}`} className="w-full h-[45%] object-cover" />
+        <div className="p-6 pb-[5rem] text-[0.875rem] h-[55%]">
+          <h2 className="font-bold text-[1.1rem] mb-3">{name}</h2>
+          <p className="mb-1"><span className="font-semibold">Population: </span>
+            <span className="opacity-90">{new Intl.NumberFormat("en-US").format(population)}</span></p>
+          <p className="mb-1"><span className="font-semibold">Region:</span> <span className="opacity-90">{region}</span></p>
+          <p><span className="font-semibold">Capital:</span> <span className="opacity-90">{capital}</span></p>
+        </div>
+      </a>
     </li>
   )
 }

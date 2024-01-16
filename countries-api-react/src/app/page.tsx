@@ -1,7 +1,6 @@
 "use client"
 
 import { Home } from '@/components/Home'
-import { useState } from 'react'
 
 const App = () => {
 

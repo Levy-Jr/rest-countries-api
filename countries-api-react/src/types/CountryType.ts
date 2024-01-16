@@ -1,12 +1,12 @@
 type NameType = {
   common: string;
   official: string;
-  nativeName: string;
-}
-
-type FlagsType = {
-  png: string;
-  svg: string;
+  nativeName: {
+    por: {
+      official: string
+      common: string;
+    }
+  };
 }
 
 export type Country = {
@@ -18,5 +18,8 @@ export type Country = {
   capital: string;
   region: string;
   population: number;
-  flags: FlagsType;
+  flags: {
+    png: string;
+    svg: string;
+  };
 }
