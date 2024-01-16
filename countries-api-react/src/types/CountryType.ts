@@ -14,12 +14,13 @@ export type Country = {
   fullName: string;
   code: string;
   currency: string;
-  languages: string[]
-  capital: string;
+  capital: string[];
   region: string;
+  languages: string | string[];
   population: number;
   flags: {
     png: string;
     svg: string;
   };
+  borders: string[] | null;
 }

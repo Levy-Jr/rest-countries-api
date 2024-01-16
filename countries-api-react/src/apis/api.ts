@@ -14,3 +14,8 @@ export const getCountry = async (name: string): Promise<Country> => {
   const result = await req.get(`/name/${name}`)
   return result.data[0]
 }
+
+export const getCountryCode = async (code: string): Promise<Country> => {
+  const result = await req.get(`/alpha/${code}`)
+  return result.data[0]
+}

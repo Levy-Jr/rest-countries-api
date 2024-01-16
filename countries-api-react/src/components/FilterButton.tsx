@@ -1,10 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-type Props = {
-
-}
-
 export const FilterButton = () => {
   return (
     <div className="relative">

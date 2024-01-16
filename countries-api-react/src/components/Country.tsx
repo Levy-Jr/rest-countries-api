@@ -3,7 +3,7 @@ type Props = {
   name: string;
   population: number;
   region: string;
-  capital: string;
+  capital: string | string[];
 }
 
 export const Country = ({ flag, name, population, region, capital }: Props) => {
