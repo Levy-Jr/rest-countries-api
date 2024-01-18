@@ -1,6 +1,7 @@
 "use client"
 
 import { useCountryCode } from "@/apis/queries"
+import { CurrenciesType, NativeNameType } from "@/types/CountryType"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -13,6 +14,23 @@ type Props = {
 const Page = ({ params }: Props) => {
   const countryCode = useCountryCode(params.countryCode)
   const dataCountryCode = countryCode.data
+
+  const renderUnknownKey = (value: NativeNameType) => {
+    const desiredKey = Object.keys(value)[0]
+    const desiredValue = value[desiredKey as keyof typeof dataCountryCode]
+    return desiredValue.common
+  }
+
+  const renderUnknownCurrencyKey = (value: CurrenciesType) => {
+    const desiredKey = Object.keys(value)[0]
+    const desiredValue = value[desiredKey as keyof typeof dataCountryCode]
+    return desiredValue.name
+  }
+
+  const renderUnknownLanguageKeys = (value: string[]): string => {
+    const desiredValue = Object.values(value)
+    return desiredValue.join(', ')
+  }
 
   return (
     <div className="mx-auto w-[min(69.375rem,100%-2rem)]" >
@@ -36,14 +54,14 @@ const Page = ({ params }: Props) => {
             <div className="flex-1">
               <h1 className="font-bold text-5xl">{dataCountryCode.name.common}</h1>
               <div>
-                <p><span className="font-semibold">Native Name: </span><span className="opacity-90">{ }</span></p>
+                <p><span className="font-semibold">Native Name: </span><span className="opacity-90">{renderUnknownKey(dataCountryCode.name.nativeName)}</span></p>
                 <p><span className="font-semibold">Population: </span><span className="opacity-90">{new Intl.NumberFormat("en-US").format(dataCountryCode.population)}</span></p>
                 <p><span className="font-semibold">Region: </span><span className="opacity-90">{dataCountryCode.region}</span></p>
-                <p><span className="font-semibold">Sub Region: </span><span className="opacity-90">{dataCountryCode.region}</span></p>
+                <p><span className="font-semibold">Sub Region: </span><span className="opacity-90">{dataCountryCode.subregion}</span></p>
                 <p><span className="font-semibold">Capital: </span><span className="opacity-90">{dataCountryCode.capital}</span></p>
-                <p><span className="font-semibold">Top Level Domain: </span><span className="opacity-90">{dataCountryCode.capital}</span></p>
-                <p><span className="font-semibold">Currencies: </span><span className="opacity-90">{dataCountryCode.capital}</span></p>
-                <p><span className="font-semibold">Languages: </span><span className="opacity-90">{ }</span></p>
+                <p><span className="font-semibold">Top Level Domain: </span><span className="opacity-90">{dataCountryCode.tld}</span></p>
+                <p><span className="font-semibold">Currencies: </span><span className="opacity-90">{renderUnknownCurrencyKey(dataCountryCode.currencies)}</span></p>
+                <p><span className="font-semibold">Languages: </span><span className="opacity-90">{renderUnknownLanguageKeys(dataCountryCode.languages)}</span></p>
               </div>
               <ul className="flex flex-wrap gap-2 items-center">
                 <span className="font-semibold">Border Countries:</span>

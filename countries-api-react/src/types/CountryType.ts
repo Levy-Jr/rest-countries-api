@@ -1,26 +1,32 @@
-type NameType = {
-  common: string;
-  official: string;
-  nativeName: {
-    por: {
-      official: string
-      common: string;
-    }
-  };
+export type NativeNameType = {
+  [key: string]: {
+    common: string;
+  }
+}
+
+export type CurrenciesType = {
+  [key: string]: {
+    name: string;
+  }
 }
 
 export type Country = {
-  name: NameType;
-  fullName: string;
-  code: string;
-  currency: string;
-  capital: string[];
-  region: string;
-  languages: string | string[];
-  population: number;
   flags: {
-    png: string;
     svg: string;
+    alt: string;
   };
+  name: {
+    common: string;
+    official: string;
+    nativeName: NativeNameType;
+  };
+  population: number;
+  code: string;
+  currencies: CurrenciesType;
+  capital: string[] | null;
+  tld: string[]
+  region: string;
+  subregion: string;
+  languages: string[];
   borders: string[] | null;
 }
