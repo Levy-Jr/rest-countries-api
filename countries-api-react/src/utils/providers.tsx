@@ -2,13 +2,29 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ReactNode } from 'react'
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 
-type Props = {
-  children: ReactNode
+type ContextType = {
+  theme: boolean;
+  setTheme: (n: boolean) => void
 }
 
-export const Providers = ({ children }: Props) => {
+const STORAGE_KEY = 'darkMode'
+
+export const ThemeContext = createContext<ContextType | null>(null)
+
+export const Providers = ({ children }: { children: ReactNode }) => {
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem(STORAGE_KEY) as string) || true)
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(darkMode))
+  }, [darkMode])
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -19,7 +35,9 @@ export const Providers = ({ children }: Props) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <ThemeContext.Provider value={{ theme: darkMode, setTheme: setDarkMode }}>
+        {children}
+      </ThemeContext.Provider>
       <ReactQueryDevtools
         initialIsOpen={false}
         buttonPosition="bottom-right"
@@ -27,3 +45,5 @@ export const Providers = ({ children }: Props) => {
     </QueryClientProvider>
   )
 }
+
+export const useTheme = () => useContext(ThemeContext)

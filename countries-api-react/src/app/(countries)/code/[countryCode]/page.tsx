@@ -65,9 +65,12 @@ const Page = ({ params }: Props) => {
               </div>
               <ul className="flex flex-wrap gap-2 items-center">
                 <span className="font-semibold">Border Countries:</span>
-                {dataCountryCode.borders?.map((item, index) => (
-                  <li key={index}><a className="text-[.875rem] inline-block bg-el-color dark:bg-dark-el-color px-8 py-1 rounded shadow-md" href={`/countries/code/${item}`}>{item}</a></li>
-                ))}
+                {dataCountryCode.borders ?
+                  <>
+                    {dataCountryCode.borders.map((item, index) => (
+                      <li key={index}><a className="text-[.875rem] inline-block bg-el-color dark:bg-dark-el-color px-8 py-1 rounded shadow-md" href={`/code/${item}`}>{item}</a></li>
+                    ))}</>
+                  : "Not available or doesn't exist"}
               </ul>
             </div>
           </div>

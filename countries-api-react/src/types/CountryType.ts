@@ -22,6 +22,7 @@ export type Country = {
   };
   population: number;
   code: string;
+  cca3: string;
   currencies: CurrenciesType;
   capital: string[] | null;
   tld: string[]
