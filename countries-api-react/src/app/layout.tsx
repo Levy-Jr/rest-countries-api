@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='dark'>
+    <html lang="en">
       <body className={`${nunito_sans.className} bg-bg dark:bg-dark-bg text-color dark:text-dark-color`}>
         <Providers>
           <Header />
