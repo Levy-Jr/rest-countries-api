@@ -46,7 +46,7 @@ const Page = ({ params }: Props) => {
       {dataCountryCode &&
         <div className="mt-12 mb-8">
 
-          <a className="mb-12 inline-block bg-el-color dark:bg-dark-el-color px-8 py-2 rounded shadow-md" href="http://localhost:3000"><FontAwesomeIcon icon={faArrowLeftLong} className="mr-3" /> Back</a>
+          <a className="mb-12 inline-block bg-el-color dark:bg-dark-el-color px-8 py-2 rounded shadow-md" href="/"><FontAwesomeIcon icon={faArrowLeftLong} className="mr-3" /> Back</a>
           <div className="flex flex-col md:flex-row justify-between items-center gap-14">
             <div className="flex-1">
               <img src={dataCountryCode.flags.svg} alt={`Bandeira do país ${dataCountryCode.name.common}`} />

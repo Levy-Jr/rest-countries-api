@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className='el-color dark:bg-dark-el-color py-6 shadow-md'>
       <div className='flex justify-between w-[min(69.375rem,100%-2rem)] mx-auto'>
-        <h1 className='font-extrabold'>Where in the world?</h1>
+        <h1 className='font-extrabold'><a href="/">Where in the world?</a></h1>
         <button onClick={handleClick} className='flex items-center gap-2 font-semibold'><FontAwesomeIcon icon={faMoon} width={14} />Dark Mode</button>
       </div>
     </header>
