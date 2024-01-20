@@ -3,6 +3,7 @@ import { Country } from "./Country"
 import { useMemo, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 export const Home = () => {
   const countries = useCountries()
@@ -28,7 +29,10 @@ export const Home = () => {
     <div className="mx-auto w-[min(69.375rem,100%-2rem)]">
       <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 justify-between my-12">
 
-        <input value={query} onChange={e => setQuery(e.target.value)} className="el-color dark:bg-dark-el-color text-color dark:text-dark-color py-4 pl-6 w-[min(100%,26rem)] text-[0.875rem] rounded outline-0 shadow-lg" type="text" placeholder="Search for a country..." />
+        <div className="w-[min(100%,26rem)] flex items-center el-color dark:bg-dark-el-color shadow-lg rounded overflow-hidden">
+          <FontAwesomeIcon icon={faSearch} className='max-w-[1rem] pl-6' />
+          <input value={query} onChange={e => setQuery(e.target.value)} className="el-color dark:bg-dark-el-color text-color dark:text-dark-color py-4 pl-6 w-full text-[0.875rem] outline-0" type="text" placeholder="Search for a country..." />
+        </div>
 
         <div className="relative text-[.875rem]">
           <button onClick={handleClick} className="max-w-[12rem] flex items-center md:max-w-[15rem] bg-el-color dark:bg-dark-el-color py-3 px-3 sm:py-3 sm:px-3 md:px-6 md:py-4 rounded font-light shadow-md"><span className="mr-12">Filter by Region</span> <FontAwesomeIcon icon={faChevronDown} className='max-w-[1rem]' /></button>
