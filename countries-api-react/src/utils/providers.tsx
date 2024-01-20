@@ -14,7 +14,9 @@ const STORAGE_KEY = 'darkMode'
 export const ThemeContext = createContext<ContextType | null>(null)
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem(STORAGE_KEY) as string) || true)
+  const [darkMode, setDarkMode] = useState(
+    typeof localStorage !== 'undefined' ? JSON.parse(localStorage.getItem(STORAGE_KEY) as string) : ""
+      || true)
 
   useEffect(() => {
     if (darkMode) {
