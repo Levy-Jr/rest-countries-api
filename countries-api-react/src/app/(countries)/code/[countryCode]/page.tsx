@@ -4,6 +4,7 @@ import { useCountryCode } from "@/apis/queries"
 import { CurrenciesType, NativeNameType } from "@/types/CountryType"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
 
 type Props = {
   params: {
@@ -73,7 +74,7 @@ const Page = ({ params }: Props) => {
                   <ul className="flex flex-wrap gap-2 items-center">
                     <span className="font-semibold min-w-fit hidden md:inline-block">Border Countries:</span>
                     {dataCountryCode.borders.map((item, index) => (
-                      <li key={index}><a className="inline-block bg-el-color dark:bg-dark-el-color px-8 py-1 rounded shadow-md" href={`/code/${item}`}>{item}</a></li>
+                      <li key={index}><Link href={`/code/${item}`} className="inline-block bg-el-color dark:bg-dark-el-color px-8 py-1 rounded shadow-md">{item}</Link></li>
                     ))}</ul>
                   : "Not available or doesn't exist"}
               </div>
