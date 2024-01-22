@@ -4,6 +4,7 @@ import { useCountryCode } from "@/apis/queries"
 import { CurrenciesType, NativeNameType } from "@/types/CountryType"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Image from "next/image"
 import Link from "next/link"
 
 type Props = {
@@ -47,10 +48,16 @@ const Page = ({ params }: Props) => {
       {dataCountryCode &&
         <div className="mt-12 mb-8">
 
-          <a className="mb-12 inline-block bg-el-color dark:bg-dark-el-color px-8 py-2 rounded shadow-md" href="/"><FontAwesomeIcon icon={faArrowLeftLong} className="mr-3" /> Back</a>
+          <Link className="mb-12 inline-block bg-el-color dark:bg-dark-el-color px-8 py-2 rounded shadow-md" href="/"><FontAwesomeIcon icon={faArrowLeftLong} className="mr-3" /> Back</Link>
           <div className="flex flex-col md:flex-row justify-between items-center gap-14">
             <div className="flex-1">
-              <img src={dataCountryCode.flags.svg} alt={`Bandeira do país ${dataCountryCode.name.common}`} />
+              <Image
+                src={dataCountryCode.flags.svg}
+                alt={`${dataCountryCode.name.common} flag`}
+                width={0}
+                height={0}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex-1">
               <h1 className="font-bold text-5xl">{dataCountryCode.name.common}</h1>
